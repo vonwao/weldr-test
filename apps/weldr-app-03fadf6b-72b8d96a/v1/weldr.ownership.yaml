@@ -1,0 +1,44 @@
+version: ownership/v2
+surfaces:
+  model:
+    mode: managed
+    app_model_segments:
+      - entities
+      - relationships
+      - workflows
+  db: managed
+  auth: managed
+  api:
+    mode: extended
+    hooks:
+      - lib/api/_hooks/**/*.ts
+  actions:
+    mode: extended
+    app_model_segments:
+      - actions
+      - integrations
+  automation:
+    mode: managed
+    app_model_segments:
+      - workflows
+  domain_logic:
+    mode: ejected
+    entrypoints:
+      - lib/domain/**/*.ts
+  ui: managed
+  ui_pages:
+    mode: extended
+    app_model_segments:
+      - pages
+      - navigation
+  ui_components:
+    mode: extended
+    eject_scopes:
+      - components/_custom/**/*
+  ui_theme:
+    mode: ejected
+    entrypoints:
+      - styles/theme/**/*
+  styling: ejected
+  infra: managed
+  ci: managed
